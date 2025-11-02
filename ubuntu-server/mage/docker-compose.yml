@@ -1,0 +1,20 @@
+services:
+  mage:
+    image: mageai/mageai:0.8.69
+    container_name: mage
+    command: ["/bin/sh", "-c", "/app/run_app.sh"]
+    env_file: .env
+
+    volumes:
+      - /home/phin/mage:/home/src/
+
+    ports:
+      - "6789:6789"
+
+    restart: unless-stopped
+
+    networks:
+      - default
+
+networks:
+  default:
